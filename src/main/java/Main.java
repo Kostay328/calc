@@ -6,7 +6,7 @@ import java.util.List;
 
 
 public class Main {
-    public static int toArabic(String number) {
+    public static int toRom(String number) {
         if (number.equals("I"))
             return 1;
         if (number.equals("II"))
@@ -30,27 +30,27 @@ public class Main {
         return 0;
     }
 
-    public static String toRoman(int number) {
-        if (number == 1)
-            return "I";
-        if (number == 2)
-            return "II";
-        if (number == 3)
-            return "III";
-        if (number == 4)
-            return "IV";
-        if (number == 5)
-            return "V";
-        if (number == 6)
-            return "VI";
-        if (number == 7)
-            return "VII";
-        if (number == 8)
-            return "VIII";
-        if (number == 9)
-            return "IX";
-        if (number == 10)
-            return "X";
+    public static String toArab(int number) {
+        if (number == -1)
+            return "-I";
+        if (number == -2)
+            return "-II";
+        if (number == -3)
+            return "-III";
+        if (number == -4)
+            return "-IV";
+        if (number == -5)
+            return "-V";
+        if (number == -6)
+            return "-VI";
+        if (number == -7)
+            return "-VII";
+        if (number == -8)
+            return "-VIII";
+        if (number == -9)
+            return "-IX";
+        if (number == -10)
+            return "-X";
         return String.valueOf(number);
         //Сам не могу понять как сделать вывод по другому а в интернет лезь не хочу(
     }
@@ -66,8 +66,8 @@ public class Main {
             s = Integer.parseInt(secondString);
         } catch (Exception ex1) {
             try {
-                f = toArabic(firstString);
-                s = toArabic(secondString);
+                f = toRom(firstString);
+                s = toRom(secondString);
                 isArabic = true;
             } catch (Exception ex2) {
                 System.out.println("INCORRECT INPUT");
@@ -95,10 +95,15 @@ public class Main {
         if (arithmetic.equals("/")) {
             res = f / s;
         }
-        if(!isArabic)
+
+        if (!isArabic && res > 0) {
             System.out.println(res);
-        else
-            System.out.println(toRoman(res));
+        } else if(res <= 0) {
+            System.out.println(toArab(res));
+        } else {
+            System.out.println("Input ERROR!");
+            System.exit(1);
+        }
     }
 
     public static void main(String[] args) throws IOException {
