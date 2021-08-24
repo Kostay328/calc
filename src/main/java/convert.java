@@ -1,3 +1,5 @@
+import java.util.TreeMap;
+
 public class convert {
     public static Boolean isRoman(String number) {
         if (number.equals("I"))
@@ -47,28 +49,26 @@ public class convert {
         return 0;
     }
 
+    private final static TreeMap<Integer, String> map = new TreeMap<Integer, String>();
+
+    static {
+        map.put(100, "C");
+        map.put(90, "XC");
+        map.put(50, "L");
+        map.put(40, "XL");
+        map.put(10, "X");
+        map.put(9, "IX");
+        map.put(5, "V");
+        map.put(4, "IV");
+        map.put(1, "I");
+
+    }
+
     public static String toRoman(int number) {
-        if (number == 1)
-            return "I";
-        if (number == 2)
-            return "II";
-        if (number == 3)
-            return "III";
-        if (number == 4)
-            return "IV";
-        if (number == 5)
-            return "V";
-        if (number == 6)
-            return "VI";
-        if (number == 7)
-            return "VII";
-        if (number == 8)
-            return "VIII";
-        if (number == 9)
-            return "IX";
-        if (number == 10)
-            return "X";
-        return String.valueOf(number);
-        //Сам не могу понять как сделать вывод по другому а в интернет лезь не хочу(
+        int l =  map.floorKey(number);
+        if ( number == l ) {
+            return map.get(number);
+        }
+        return map.get(l) + toRoman(number-l);
     }
 }
