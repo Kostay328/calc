@@ -46,8 +46,7 @@ public class logic {
         } else if(isArabic && res <= 0) {
             System.out.println(res);
         } else {
-            System.out.println("Input ERROR!");
-            System.exit(1);
+            System.out.println("Вывод не соответствует условиям");
         }
     }
 
