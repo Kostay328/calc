@@ -43,7 +43,7 @@ public class logic {
 
         if (!isArabic && res > 0) {
             System.out.println(convert.toRoman(res));
-        } else if(isArabic && res <= 0) {
+        } else if(isArabic) {
             System.out.println(res);
         } else {
             System.out.println("Вывод не соответствует условиям");
